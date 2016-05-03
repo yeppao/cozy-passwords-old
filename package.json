@@ -1,0 +1,8 @@
+{
+  "name": "cozy-passwords",
+  "cozy-type": "static",
+  "cozy-displayName": "Passwords storage",
+  "version": "1.0.0",
+  "description": "Password on cozy",
+  "icon-path": "icon.png"
+}
