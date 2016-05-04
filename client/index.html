@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"><title>Cozy - Tutorial</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body role="application">
+<ul role="navigation">
+    <li aria-selected="true"><a href="#crud-create">Create a new password</a></li>
+    <li aria-selected="false"><a href="#crud-fetch">Fetch an existing password</a></li>
+    <li aria-selected="false"><a href="#crud-update">Update an existing password</a></li>
+    <li aria-selected="false"><a href="#crud-delete">Delete an existing password</a></li>
+    <li aria-selected="false"><a href="#crud-list">List passwords</a></li>
+</ul>
+<div role="main">
+    <div role="panel" id="crud-create">
+        <h2>Create a new password</h2>
+        <div role="form">
+            <h3>Fill the form to create a new password :</h3>
+            <label for="create-name">Name:
+                <input type="text" id="create-name" /></label>
+
+            <label for="create-login">Login:
+                <input type="text" id="create-login" /></label>
+            <label for="create-password">Password:
+                <input type="text" id="create-password" /></label>
+            <label for="create-website">Website (optional):
+                <input type="text" id="create-website" /></label>
+        </div>
+        <div class="pass">
+            <h3>This will be found in `req.body`:</h3>
+            <pre>{}</pre>
+
+            <button>Submit request POST /passwords</button>
+        </div>
+        <div class="result">
+            <h3>Request's response:</h3>
+            <p class="status">Status code: <span></span></p>
+            <pre class="body"></pre>
+        </div>
+    </div>
+    <div role="panel" id="crud-fetch">
+        <h2>Fetch an existing debt</h2>
+        <div>
+            <h3>Fill the form with the debt's ID you want to fetch:</h3>
+            <label for="fetch-id">ID:
+                <input type="text" id="fetch-id" /></label>
+            <button>Submit request GET /passwords/:id</button>
+        </div>
+        <div class="result">
+            <h3>Request's response.</h3>
+            <p class="status">Status code: <span></span></p>
+            <pre class="body"></pre>
+        </div>
+    </div>
+    <div role="panel" id="crud-update">
+        <h2>Update an existing password</h2>
+        <div role="form">
+            <h3>Fill the form to update an existing password:</h3>
+            <label for="update-id">ID:
+                <input type="text" id="update-id" /></label>
+            <label for="update-name">Name:
+                <input type="text" id="update-name" /></label>
+
+            <label for="update-login">Login:
+                <input type="text" id="update-login" /></label>
+            <label for="update-password">Password:
+                <input type="text" id="update-password" /></label>
+            <label for="update-website">Website (optional):
+                <input type="text" id="update-website" /></label>
+        </div>
+        <div class="pass">
+            <h3>This will be found in `req.body`:</h3>
+            <pre>{}</pre>
+
+            <button>Submit request PUT /passwords/:id</button>
+        </div>
+        <div class="result">
+            <h3>Request's response:</h3>
+            <p class="status">Status code: <span></span></p>
+            <pre class="body"></pre>
+        </div>
+    </div>
+    <div role="panel" id="crud-delete">
+        <h2>Delete an existing debt</h2>
+        <div>
+            <h3>Fill the form with the debt's ID you want to delete:</h3>
+            <label for="fetch-id">ID:
+                <input type="text" id="delete-id" /></label>
+            <button>Submit request DELETE /passwords/:id</button>
+        </div>
+        <div class="result">
+            <h3>Request's response:</h3>
+            <p class="status">Status code: <span></span></p>
+            <pre class="body"></pre>
+        </div>
+    </div>
+    <div role="panel" id="crud-list">
+        <h2>List all existing debts</h2>
+        <div>
+            <button>Submit request GET /passwords/</button>
+        </div>
+        <div class="result">
+            <h3>Request's response:</h3>
+            <p class="status">Status code: <span></span></p>
+            <pre class="body"></pre>
+        </div>
+    </div>
+</div>
+
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/app.js"></script>
+</body>
+</html>
