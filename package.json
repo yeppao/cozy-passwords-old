@@ -4,5 +4,10 @@
   "cozy-displayName": "Passwords storage",
   "version": "1.0.0",
   "description": "Password on cozy",
+  "cozy-permissions": {
+    "contact": {
+      "description": "I need it only for test purposes"
+    }
+  }
   "icon-path": "icon.png"
 }
