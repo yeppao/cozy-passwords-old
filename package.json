@@ -9,5 +9,33 @@
       "description": "I need it only to store your encrypted password"
     }
   },
-  "icon-path": "icon.png"
+  "icon-path": "icon.png",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "1.14.2",
+    "cozydb": "0.1.7",
+    "express": "4.13.3",
+    "morgan": "1.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "1.8.1"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node_modules/.bin/nodemon server.js --ignore client/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyeppao/cozy-passwords.git"
+  },
+  "keywords": [
+    "cozy",
+    "tutorial"
+  ],
+  "author": "Cozy Cloud",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yeppao/cozy-passwords/issues"
+  },
+  "homepage": "https://github.com/yeppao/cozy-passwords"
 }

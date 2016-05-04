@@ -49,7 +49,7 @@ function createPasswordHandler() {
         var password = {};
 
         if ($name.val() && $name.val().length > 0) {
-            password.description = $name.val();
+            password.name = $name.val();
         }
 
         if ($login.val() && $login.val().length > 0) {
@@ -57,7 +57,7 @@ function createPasswordHandler() {
         }
 
         if ($password.val() && $password.val().length > 0) {
-            password.dueDate = password.val();
+            password.password = $password.val();
         }
         
         if ($website.val()) {
@@ -172,7 +172,7 @@ function updatePasswordHandler() {
         var password = {};
 
         if ($name.val() && $name.val().length > 0) {
-            password.description = $name.val();
+            password.name = $name.val();
         }
 
         if ($login.val() && $login.val().length > 0) {
@@ -180,7 +180,7 @@ function updatePasswordHandler() {
         }
 
         if ($password.val() && $password.val().length > 0) {
-            password.dueDate = password.val();
+            password.password = password.val();
         }
 
         if ($website.val()) {
@@ -234,10 +234,10 @@ function updatePasswordHandler() {
         });
     }
 
-    $description.keyup(onFieldChange);
-    $amount.keyup(onFieldChange);
-    $dueDate.keyup(onFieldChange);
-    $creditor.keyup(onFieldChange);
+    $name.keyup(onFieldChange);
+    $login.keyup(onFieldChange);
+    $password.keyup(onFieldChange);
+    $website.keyup(onFieldChange);
     $button.click(onSubmit);
 }
 

@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var cozydb = require('cozydb');
 
 /*
  Configuration section.
@@ -18,16 +19,21 @@ app.use(express.static('client'));
 var indexController = require('./server/controllers/index');
 app.use(indexController);
 
-var debtController = require('./server/controllers/password');
-app.use(debtController);
+var passwordController = require('./server/controllers/password');
+app.use(passwordController);
 
 
 /*
- Start the HTTP server.
+ CouchDB views initialization. It must be done before starting the server.
  */
-var server = app.listen(9250, function () {
-    var host = server.address().address;
-    var port = server.address().port;
+cozydb.configure(__dirname, null, function() {
+    /*
+     Start the HTTP server.
+     */
+    var server = app.listen(9250, function () {
+        var host = server.address().address;
+        var port = server.address().port;
 
-    console.log('Cozy tutorial app listening at http://%s:%s', host, port);
+        console.log('Cozy tutorial app listening at http://%s:%s', host, port);
+    });
 });
