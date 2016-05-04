@@ -1,7 +1,6 @@
 {
-  "name": "cozy-passwords",
-  "cozy-type": "static",
-  "cozy-displayName": "Passwords storage",
+  "name": "password-storage",
+  "displayName": "Passwords storage",
   "version": "1.0.0",
   "description": "Password on cozy",
   "cozy-permissions": {
@@ -26,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cyeppao/cozy-passwords.git"
+    "url": "https://github.com/yeppao/cozy-passwords.git"
   },
   "keywords": [
     "cozy",
