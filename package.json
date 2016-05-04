@@ -1,10 +1,10 @@
 {
   "name": "password-storage",
-  "displayName": "Passwords storage",
-  "version": "1.0.0",
+  "cozy-displayName": "Passwords storage",
+  "version": "1.0.1",
   "description": "Password on cozy",
   "cozy-permissions": {
-    "Passwords": {
+    "password": {
       "description": "I need it only to store your encrypted password"
     }
   },
