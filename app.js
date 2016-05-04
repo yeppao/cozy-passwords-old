@@ -24,8 +24,8 @@ function updateContactList(){
 }
 
 function onSendChanged(){
-    var contactName = document.querySelector('.send').value.trim();
-    var values = {n: contactName};
+    var passwordName = document.querySelector('.send').value.trim();
+    var values = {n: passwordName};
     cozysdk.create('Password', values, function(err, res) {
         if (err != null) return alert(err);
         // res.id == "8239283928326"

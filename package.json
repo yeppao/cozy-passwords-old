@@ -5,9 +5,9 @@
   "version": "1.0.0",
   "description": "Password on cozy",
   "cozy-permissions": {
-    "contact": {
-      "description": "I need it only for test purposes"
+    "Passwords": {
+      "description": "I need it only to store your encrypted password"
     }
-  }
+  },
   "icon-path": "icon.png"
 }
