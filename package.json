@@ -1,40 +1,11 @@
 {
-  "name": "password-storage",
-  "cozy-displayName": "Passwords storage",
-  "version": "1.0.1",
-  "description": "Password on cozy",
-  "cozy-permissions": {
-    "password": {
-      "description": "I need it only to store your encrypted password"
-    }
-  },
-  "icon-path": "icon.png",
-  "main": "server.js",
-  "dependencies": {
-    "body-parser": "1.14.2",
-    "cozydb": "0.1.7",
-    "express": "4.13.3",
-    "morgan": "1.6.1"
-  },
-  "devDependencies": {
-    "nodemon": "1.8.1"
-  },
+  "name": "cozy-passwords",
+  "version": "0.0.1",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node_modules/.bin/nodemon server.js --ignore client/"
+    "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yeppao/cozy-passwords.git"
-  },
-  "keywords": [
-    "cozy",
-    "tutorial"
-  ],
-  "author": "Cozy Cloud",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/yeppao/cozy-passwords/issues"
-  },
-  "homepage": "https://github.com/yeppao/cozy-passwords"
+  "dependencies": {
+    "americano": "^0.4.5",
+    "printit": "^0.1.20"
+  }
 }

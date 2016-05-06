@@ -1,128 +1,64 @@
-var express = require('express');
-var router = express.Router();
-var Password = require('../models/password');
+import Password from '../models/password';
 
-// Create a new debt
-router.post('passwords', function(req, res, next) {
-    Password.create(req.body, function(err, password) {
-        if(err) {
-            /*
-             If an unexpected error occurs, forward it to Express error
-             middleware which will send the error properly formatted.
-             */
-            next(err);
-        } else {
-            /*
-             If everything went well, send the newly created debt with the
-             correct HTTP status.
-             */
-            res.status(201).send(password);
-        }
-    });
-});
+import { makeLogger, sendErr, asyncErr } from '../helpers';
 
+let log = makeLogger('controllers/password');
 
-// Fetch an existing debt
-router.get('passwords/:id', function(req, res, next) {
-    Password.find(req.params.id, function(err, password) {
-        if(err) {
-            /*
-             If an unexpected error occurs, forward it to Express error
-             middleware which will send the error properly formatted.
-             */
-            next(err);
-        } else {
-            /*
-             If everything went well, send the fetched debt with the correct
-             HTTP status.
-             */
-            res.status(200).send(password);
-        }
-    });
-});
+export async function create(req, res) {
+    let pass = req.body;
+
+    // Missing parameters
+    if (typeof pass.name === 'undefined')
+        return sendErr(res, `when creating a password: ${cat}`, 400,
+            'Missing password name');
+
+    if (typeof pass.login === 'undefined')
+        return sendErr(res, `when creating a password: ${cat}`, 400,
+            'Missing password login');
+
+    if (typeof pass.password === 'undefined')
+        return sendErr(res, `when creating a password: ${cat}`, 400,
+            'Missing password');
+
+    try {
+        let created = await Password.create(pass);
+        res.status(200).send(created);
+    } catch (err) {
+        return asyncErr(res, err, 'when creating password');
+    }
+}
 
 
-// Update an existing debt
-router.put('passwords/:id', function(req, res, next) {
-    Password.find(req.params.id, function(err, password) {
-        if(err) {
-            /*
-             If an unexpected error occurs, forward it to Express error
-             middleware which will send the error properly formatted.
-             */
-            next(err);
-        } else if(!password) {
-            /*
-             If there was no unexpected error, but that the document has not
-             been found, send the legitimate status code. `debt` is null.
-             */
-            res.sendStatus(404);
-        } else {
-            /*
-             `Debt.updateAttributes` sends a request to the Data System to
-             update the document, given its ID and the fields to update.
-             */
-            password.updateAttributes(req.body, function(err, password) {
-                if(err) {
-                    /*
-                     If an unexpected error occurs, forward it to Express
-                     error middleware which will send the error properly
-                     formatted.
-                     */
-                    next(err);
-                } else {
-                    /*
-                     If everything went well, send the fetched debt with the
-                     correct HTTP status.
-                     */
-                    res.status(200).send(password);
-                }
-            });
-        }
+export async function update(req, res) {
+    let params = req.body;
 
-    });
-});
+    // Missing parameters
+    if (typeof params.name === 'undefined')
+        return sendErr(res, `when updating a password: ${cat}`, 400,
+            'Missing password name');
 
+    if (typeof params.login === 'undefined')
+        return sendErr(res, `when updating a password: ${cat}`, 400,
+            'Missing password login');
 
-// Remove an existing debt
-router.delete('passwords/:id', function(req, res, next) {
-    Password.destroy(req.params.id, function(err) {
-        if(err) {
-            /*
-             If an unexpected error occurs, forward it to Express error
-             middleware which will send the error properly formatted.
-             */
-            next(err);
-        } else {
-            /*
-             If everything went well, send an empty response with the correct
-             HTTP status.
-             */
-            res.sendStatus(204);
-        }
-    });
-});
+    if (typeof params.password === 'undefined')
+        return sendErr(res, `when updating a password: ${cat}`, 400,
+            'Missing password');
 
+    let password = Password.find(req.params.id);
+    try {
+        let newPass = await password.updateAttributes(params);
+        res.status(200).send(newPass);
+    } catch (err) {
+        return asyncErr(res, err, 'when updating a password');
+    }
+}
 
-// List of all debts, for a given creditor
-router.get('passwords', function(req, res, next) {
-    Password.request('all', null, function(err, passwords) {
-        if(err) {
-            /*
-             If an unexpected error occurs, forward it to Express error
-             middleware which will send the error properly formatted.
-             */
-            next(err);
-        } else {
-            /*
-             If everything went well, send an empty response with the correct
-             HTTP status.
-             */
-            res.status(200).json(passwords);
-        }
-    });
-});
-
-
-// Export the router instance to make it available from other files.
-module.exports = router;
+export async function destroy(req, res) {
+    try {
+        await Password.destroy(req.params.id);
+        res.sendStatus(204);
+    } catch(err) {
+        return asyncErr(res, err, 'when deleting password');
+    }
+};
