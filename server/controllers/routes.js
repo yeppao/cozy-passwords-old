@@ -1,8 +1,6 @@
-var index = require('./index');
-var password = require('./password');
+import * as password from './password';
 
 module.exports = {
-  '': { get: index.index },
   'passwords': {
     get: password.all,
     post: password.create
