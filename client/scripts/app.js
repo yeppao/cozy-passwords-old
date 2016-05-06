@@ -74,7 +74,7 @@ function createPasswordHandler() {
 
         $.ajax({
             'method': 'POST',
-            'url': '/passwords',
+            'url': 'passwords',
             'data': password,
             'headers': {
                 'content-type': 'application/json'
@@ -127,7 +127,7 @@ function fetchPasswordHandler() {
 
         $.ajax({
             'method': 'GET',
-            'url': '/passwords/' + id,
+            'url': 'passwords/' + id,
             'complete': function(xhr, textStatus) {
                 $resultStatus.html(xhr.status);
 
@@ -205,7 +205,7 @@ function updatePasswordHandler() {
 
         $.ajax({
             'method': 'PUT',
-            'url': '/passwords/' + id,
+            'url': 'passwords/' + id,
             'data': password,
             'headers': {
                 'content-type': 'application/json'
@@ -263,7 +263,7 @@ function deletePasswordHandler() {
 
         $.ajax({
             'method': 'DELETE',
-            'url': '/passwords/' + id,
+            'url': 'passwords/' + id,
             'complete': function(xhr, textStatus) {
                 $resultStatus.html(xhr.status);
 
@@ -299,7 +299,7 @@ function listPasswordHandler() {
 
         $.ajax({
             'method': 'GET',
-            'url': '/passwords/',
+            'url': 'passwords/',
             'complete': function(xhr, textStatus) {
                 $resultStatus.html(xhr.status);
 
