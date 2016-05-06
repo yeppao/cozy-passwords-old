@@ -3,7 +3,7 @@ var router = express.Router();
 var Password = require('../models/password');
 
 // Create a new debt
-router.post('/passwords', function(req, res, next) {
+router.post('passwords', function(req, res, next) {
     Password.create(req.body, function(err, password) {
         if(err) {
             /*
@@ -23,7 +23,7 @@ router.post('/passwords', function(req, res, next) {
 
 
 // Fetch an existing debt
-router.get('/passwords/:id', function(req, res, next) {
+router.get('passwords/:id', function(req, res, next) {
     Password.find(req.params.id, function(err, password) {
         if(err) {
             /*
@@ -43,7 +43,7 @@ router.get('/passwords/:id', function(req, res, next) {
 
 
 // Update an existing debt
-router.put('/passwords/:id', function(req, res, next) {
+router.put('passwords/:id', function(req, res, next) {
     Password.find(req.params.id, function(err, password) {
         if(err) {
             /*
@@ -85,7 +85,7 @@ router.put('/passwords/:id', function(req, res, next) {
 
 
 // Remove an existing debt
-router.delete('/passwords/:id', function(req, res, next) {
+router.delete('passwords/:id', function(req, res, next) {
     Password.destroy(req.params.id, function(err) {
         if(err) {
             /*
@@ -105,7 +105,7 @@ router.delete('/passwords/:id', function(req, res, next) {
 
 
 // List of all debts, for a given creditor
-router.get('/passwords', function(req, res, next) {
+router.get('passwords', function(req, res, next) {
     Password.request('all', null, function(err, passwords) {
         if(err) {
             /*
