@@ -1,13 +1,4 @@
 {
-
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-
-  }
-}
-{
   "name": "cozy-passwords",
   "cozy-displayName": "Passwords storage",
   "version": "0.0.2",
