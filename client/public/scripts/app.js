@@ -176,11 +176,11 @@ function updatePasswordHandler() {
         }
 
         if ($login.val() && $login.val().length > 0) {
-            password.login = $password.val();
+            password.login = $login.val();
         }
 
         if ($password.val() && $password.val().length > 0) {
-            password.password = password.val();
+            password.password = $password.val();
         }
 
         if ($website.val()) {

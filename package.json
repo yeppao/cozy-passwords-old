@@ -1,10 +1,11 @@
 {
   "name": "cozy-passwords",
+  "cozy-type": "static",
   "cozy-displayName": "Passwords storage",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Password on cozy",
   "cozy-permissions": {
-    "password": {
+    "Passwords": {
       "description": "I need it only to store your encrypted password"
     }
   },
@@ -13,8 +14,6 @@
   "dependencies": {
     "body-parser": "1.14.2",
     "cozydb": "0.1.7",
-    "americano": "^0.4.5",
-    "printit": "^0.1.20",
     "express": "4.13.3",
     "morgan": "1.6.1"
   },
@@ -27,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yeppao/cozy-passwords.git"
+    "url": "https://github.com/cyeppao/cozy-passwords.git"
   },
   "keywords": [
     "cozy",

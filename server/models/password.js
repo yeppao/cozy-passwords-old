@@ -1,17 +1,40 @@
-import * as americano from 'cozydb';
-import { makeLogger, promisify, promisifyModel } from '../helpers';
+// Definition of the document type and basic operations on debts.
+var cozydb = require('cozydb');
 
-let log = makeLogger('models/account');
+var Password = cozydb.getModel('Password', {
+    /*
+     This is the name of the
+     */
+    'name': {
+        default: '',
+        type: String
+    },
 
-let Password = americano.getModel('password', {
-    name: String,
-    login: String,
-    password: String,
-    website: String
+    /*
+     This is the identifier of the registered password
+     */
+    'login': {
+        default: '',
+        type: String
+    },
+
+    /*
+     This is the encrypted password
+     */
+    'password': {
+        default: '',
+        type: String
+    },
+
+    /*
+     Optional field of the website url
+     */
+    'website': {
+        default: '',
+        type: String
+    }
 });
 
-Account = promisifyModel(Account);
 
-let request = promisify(::Password.request);
-
+// Make this model available from other files.
 module.exports = Password;

@@ -1,7 +1,7 @@
-import * as americano from 'cozydb';
+var cozydb = require('cozydb');
 
 module.exports = {
     password: {
-        all: americano.defaultRequests.all
+        all: cozydb.defaultRequests.all
     }
 };
