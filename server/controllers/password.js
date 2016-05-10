@@ -97,7 +97,7 @@ module.exports.update = function(req, res, next) {
 
 
 
-  Password.find(pass.id, function(err, password) {
+  Password.find(req.params.id, function(err, password) {
     if(err) {
       /*
        If an unexpected error occurs, forward it to Express error
