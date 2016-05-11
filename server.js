@@ -6,7 +6,7 @@ var cozydb = require('cozydb');
  */
 cozydb.configure(__dirname, null, function() {
     var port = process.env.PORT || 3000;
-    americano.start({name: 'cozy-passwords', port: port}, function (err, app, server) {
+    americano.start({name: 'testpassword', port: port}, function (err, app, server) {
         // Do something when everything is properly started.
     });
 });
