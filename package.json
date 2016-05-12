@@ -1,8 +1,7 @@
 {
-  "name": "testpassword",
-  "cozy-type": "static",
+  "name": "cozy-passwords",
   "cozy-displayName": "Passwords storage",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Password on cozy",
   "cozy-permissions": {
     "Passwords": {
@@ -12,10 +11,12 @@
   "icon-path": "icon.png",
   "main": "server.js",
   "dependencies": {
+    "americano": "^0.4.5",
     "body-parser": "1.14.2",
     "cozydb": "0.1.7",
     "express": "4.13.3",
-    "morgan": "1.6.1"
+    "morgan": "1.6.1",
+    "jade": "1.11.0"
   },
   "devDependencies": {
     "nodemon": "1.8.1"

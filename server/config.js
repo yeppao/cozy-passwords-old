@@ -1,25 +1,51 @@
-var americano = require('americano');
+var americano, path, publicPath, publicStatic, staticMiddleware, viewsDir;
+
+americano = require('americano');
+
+
+path = require('path');
+
+publicPath = __dirname + "/../client/public";
+
+staticMiddleware = americano["static"](publicPath, {
+    maxAge: 86400000
+});
+
+publicStatic = function(req, res, next) {
+    var assetsMatched, detectAssets;
+    detectAssets = /\/(stylesheets|javascripts|images|fonts)+\/(.+)$/;
+    assetsMatched = detectAssets.exec(req.url);
+    if (assetsMatched != null) {
+        req.url = assetsMatched[0];
+    }
+    return staticMiddleware(req, res, function(err) {
+        return next(err);
+    });
+};
+
+viewsDir = path.resolve(__dirname, '..', 'client');
 
 module.exports = {
     common: {
         use: [
-            americano.bodyParser(),
-            americano.methodOverride(),
-            americano.static(__dirname + '/../client/public', {
-                maxAge: 86400000
+            staticMiddleware,
+            publicStatic,
+            americano.bodyParser({
+                keepExtensions: true
             })
         ],
         useAfter: [
             americano.errorHandler({
                 dumpExceptions: true,
                 showStack: true
-            }),
-        ]
+            })
+        ],
+        set: {
+            views: viewsDir,
+            'view engine': 'jade'
+        }
     },
-    development: [
-        americano.logger('dev')
-    ],
-    production: [
-        americano.logger('short')
-    ]
+    development: [americano.logger('dev')],
+    production: [americano.logger('short')],
+    plugins: ['cozydb']
 };
