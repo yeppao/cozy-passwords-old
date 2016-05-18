@@ -1,9 +1,16 @@
-var americano, path, publicPath, publicStatic, staticMiddleware, viewsDir;
+
+
+var americano, path, publicPath, publicStatic, staticMiddleware, viewsDir, salt;
 
 americano = require('americano');
 
-
 path = require('path');
+
+/*
+
+ */
+salt = require('./salt');
+salt.getUserSalt();
 
 publicPath = __dirname + "/../client/public";
 
